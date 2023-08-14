@@ -1,0 +1,24 @@
+﻿@model PrestamoModel
+
+<h2>Eliminar Préstamo</h2>
+
+<h4>¿Estás seguro de que deseas eliminar este préstamo?</h4>
+<p>
+    <strong>Id:</strong> @Model.Id <br />
+    <strong>Estado de Préstamo:</strong> @Model.EstadoPrestamo.Descripcion <br />
+    <strong>Persona:</strong> @Model.Persona.Nombre @Model.Persona.Apellido <br />
+    <strong>Libro:</strong> @Model.Libro.Titulo <br />
+    <strong>Fecha de Devolución:</strong> @Model.FechaDevolucion.ToShortDateString() <br />
+    <strong>Fecha de Confirmación:</strong> @Model.FechaConfirmacionDevolucion.ToShortDateString() <br />
+    <strong>Estado Entregado:</strong> @Model.EstadoEntregado <br />
+    <strong>Estado Recibido:</strong> @Model.EstadoRecibido <br />
+</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>

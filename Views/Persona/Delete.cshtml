@@ -1,0 +1,22 @@
+﻿@model PersonaModel
+
+<h2>Eliminar Persona</h2>
+
+<h4>¿Estás seguro de que deseas eliminar esta persona?</h4>
+<p>
+    <strong>Id:</strong> @Model.Id <br />
+    <strong>Nombre:</strong> @Model.Nombre <br />
+    <strong>Apellido:</strong> @Model.Apellido <br />
+    <strong>Correo:</strong> @Model.Correo <br />
+    <strong>Tipo de Persona:</strong> @Model.TipoPersona.Nombre <br />
+    <strong>Estado:</strong> @(Model.Estado ? "Activo" : "Inactivo") <br />
+</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>

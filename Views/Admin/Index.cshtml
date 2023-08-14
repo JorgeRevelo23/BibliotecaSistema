@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <!-- Total Libros Card -->
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Total Libros</div>
+            <div class="card-body">
+                <h5 class="card-title" id="totalLibros">1</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Personas Card -->
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-header">Total Personas</div>
+            <div class="card-body">
+                <h5 class="card-title" id="totalPersonas">1</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Préstamos Card -->
+    <div class="col-md-4">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-header">Total Préstamos</div>
+            <div class="card-body">
+                <h5 class="card-title" id="totalPrestamos">1</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Función para obtener los datos del servidor utilizando Ajax
+        function getDashboardData() {
+            $.ajax({
+                url: '@Url.Action("GetDashboardData", "Admin")',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Actualizar los valores en las tarjetas
+                    $("#totalLibros").text(data.CantidadLibros);
+                    $("#totalPersonas").text(data.CantidadPersonas);
+                    $("#totalPrestamos").text(data.CantidadPrestamos);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        // Llamar a la función para obtener los datos al cargar la página
+        getDashboardData();
+
+        // Actualizar los datos cada cierto intervalo de tiempo (por ejemplo, cada 30 segundos)
+        setInterval(getDashboardData, 30000);
+    });
+</script>

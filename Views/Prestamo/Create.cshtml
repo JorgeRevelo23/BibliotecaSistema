@@ -1,0 +1,51 @@
+﻿@model PrestamoModel
+
+<h2>Crear Nuevo Préstamo</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="EstadoPrestamoId" class="control-label">Estado de Préstamo</label>
+        <select asp-for="EstadoPrestamoId" asp-items="@(new SelectList(ViewBag.EstadoPrestamo, "Id", "Descripcion"))" class="form-control">
+            <option value="">Seleccione un estado de préstamo</option>
+        </select>
+        <span asp-validation-for="EstadoPrestamoId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PersonaId" class="control-label">Persona</label>
+        <select asp-for="PersonaId" asp-items="@(new SelectList(ViewBag.Personas, "Id", "Nombre"))" class="form-control">
+            <option value="">Seleccione una persona</option>
+        </select>
+        <span asp-validation-for="PersonaId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LibroId" class="control-label">Libro</label>
+        <select asp-for="LibroId" asp-items="@(new SelectList(ViewBag.Libros, "Id", "Titulo"))" class="form-control">
+            <option value="">Seleccione un libro</option>
+        </select>
+        <span asp-validation-for="LibroId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FechaDevolucion" class="control-label">Fecha de Devolución</label>
+        <input asp-for="FechaDevolucion" class="form-control" />
+        <span asp-validation-for="FechaDevolucion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FechaConfirmacionDevolucion" class="control-label">Fecha de Confirmación</label>
+        <input asp-for="FechaConfirmacionDevolucion" class="form-control" />
+        <span asp-validation-for="FechaConfirmacionDevolucion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EstadoEntregado" class="control-label">Estado Entregado</label>
+        <input asp-for="EstadoEntregado" class="form-control" />
+        <span asp-validation-for="EstadoEntregado" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EstadoRecibido" class="control-label">Estado Recibido</label>
+        <input asp-for="EstadoRecibido" class="form-control" />
+        <span asp-validation-for="EstadoRecibido" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Crear" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>

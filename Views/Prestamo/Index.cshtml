@@ -1,0 +1,43 @@
+﻿@model List<PrestamoModel>
+
+<h2>Lista de Préstamos</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo Préstamo</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Estado de Préstamo</th>
+            <th>Persona</th>
+            <th>Libro</th>
+            <th>Fecha de Devolución</th>
+            <th>Fecha de Confirmación</th>
+            <th>Estado Entregado</th>
+            <th>Estado Recibido</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prestamo in Model)
+        {
+            <tr>
+                <td>@prestamo.Id</td>
+                <td>@prestamo.EstadoPrestamo.Descripcion</td>
+                <td>@prestamo.Persona.Nombre @prestamo.Persona.Apellido</td>
+                <td>@prestamo.Libro.Titulo</td>
+                <td>@prestamo.FechaDevolucion.ToShortDateString()</td>
+                <td>@prestamo.FechaConfirmacionDevolucion.ToShortDateString()</td>
+                <td>@prestamo.EstadoEntregado</td>
+                <td>@prestamo.EstadoRecibido</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@prestamo.Id" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Edit" asp-route-id="@prestamo.Id" class="btn btn-primary btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@prestamo.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

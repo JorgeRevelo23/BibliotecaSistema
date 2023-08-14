@@ -1,0 +1,24 @@
+﻿@model LibroModel
+
+<h2>Eliminar Libro</h2>
+
+<h4>¿Estás seguro de que deseas eliminar este libro?</h4>
+<p>
+    <strong>Id:</strong> @Model.Id <br />
+    <strong>Título:</strong> @Model.Titulo <br />
+    <strong>Autor:</strong> @Model.Autor.Nombre <br />
+    <strong>Categoría:</strong> @Model.Categoria.Nombre <br />
+    <strong>Editorial:</strong> @Model.Editorial.Nombre <br />
+    <strong>Ubicación:</strong> @Model.Ubicacion <br />
+    <strong>Ejemplares:</strong> @Model.Ejemplares <br />
+    <strong>Estado:</strong> @Model.Estado
+</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+﻿@model List<AutorModel>
+
+<h2>Lista de Autores</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo Autor</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var autor in Model)
+        {
+            <tr>
+                <td>@autor.Id</td>
+                <td>@autor.Nombre</td>
+                <td>@(autor.Estado ? "Activo" : "Inactivo")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@autor.Id" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Edit" asp-route-id="@autor.Id" class="btn btn-primary btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@autor.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@model PrestamoModel
+
+<h2>Detalles del Préstamo</h2>
+
+<dl class="row">
+    <dt class="col-sm-2">Id</dt>
+    <dd class="col-sm-10">@Model.Id</dd>
+    <dt class="col-sm-2">Estado de Préstamo</dt>
+    <dd class="col-sm-10">@Model.EstadoPrestamo.Descripcion</dd>
+    <dt class="col-sm-2">Persona</dt>
+    <dd class="col-sm-10">@Model.Persona.Nombre @Model.Persona.Apellido</dd>
+    <dt class="col-sm-2">Libro</dt>
+    <dd class="col-sm-10">@Model.Libro.Titulo</dd>
+    <dt class="col-sm-2">Fecha de Devolución</dt>
+    <dd class="col-sm-10">@Model.FechaDevolucion.ToShortDateString()</dd>
+    <dt class="col-sm-2">Fecha de Confirmación</dt>
+    <dd class="col-sm-10">@Model.FechaConfirmacionDevolucion.ToShortDateString()</dd>
+    <dt class="col-sm-2">Estado Entregado</dt>
+    <dd class="col-sm-10">@Model.EstadoEntregado</dd>
+    <dt class="col-sm-2">Estado Recibido</dt>
+    <dd class="col-sm-10">@Model.EstadoRecibido</dd>
+</dl>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+</p>
